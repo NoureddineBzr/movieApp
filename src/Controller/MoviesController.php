@@ -9,9 +9,14 @@ use Symfony\Component\Routing\Attribute\Route;
 class MoviesController extends AbstractController
 {
     #[Route('/movies', name: 'movies')]
-    public function index($name): Response
+    public function index(): Response
     {
-        return $this->render();
+        $movies = ['jumanji','jumanji', 'jumanji', 'jimanji'];
+        return $this->render('movies/index.html.twig',
+    array(
+        'movies' => $movies
+    )   
+        );
     }
 
    
