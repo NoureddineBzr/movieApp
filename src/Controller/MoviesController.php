@@ -15,4 +15,13 @@ class MoviesController extends AbstractController
             'controller_name' => 'MoviesController',
         ]);
     }
+
+    #[Route('/old', name:' old')]
+    public function oldMethod():Response{
+        return $this->json([
+            'path' => 'src/controller/moviesController',
+            'message' => 'Old Method'
+        ]);
+    }
 }
+ 
