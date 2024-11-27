@@ -11,20 +11,17 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class MoviesController extends AbstractController
 {
-    private $em;
-    public function __construct(EntityManagerInterface $em)
-    {
-        $this->em=$em;
-    }
+   private $movieRepository;
+   public function __construct(MovieRepository $movieRepository){
+        $this->movieRepository = $movieRepository;
+   }
 
 
     #[Route('/movies', name: 'movies')]
     public function index( ): Response
     {
-        $repository = $this->em->getRepository(Movie::class);
-        $movies=$repository->getClassName();
-       
-        // dd($movies);
+        $movies = $this->movieRepository->findAll();
+        dd($movies);
         return $this->render('movies/index.html.twig');
     }
 
